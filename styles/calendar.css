@@ -1,0 +1,36 @@
+/* CALENDAR PAGE LAYOUT */
+.calendar-section {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CARD WRAPPER */
+.calendar-image {
+    width: 100%;
+    max-width: 900px;
+    /* prevents the image from becoming too large */
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADER NAV FIX (your HTML had two "active" links) */
+.nav.centered a.active {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+/* MOBILE TWEAKS */
+@media (max-width: 600px) {
+    .calendar-section {
+        padding: 40px 10px;
+    }
+
+    .calendar-image {
+        border-radius: 8px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    }
+}
