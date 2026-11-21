@@ -1,0 +1,301 @@
+/* ============================================================
+   Verb Attack - styles (v2)
+   All sizes scale from --board-w so the game fits any screen.
+   ============================================================ */
+
+:root {
+    --board-w: 46vw;                              /* width of each board */
+    --cell-h: calc(var(--board-w) * 0.142);       /* height of one square */
+    --hit-dur: 1.3s;                              /* length of the hit animation */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+textarea, input {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+body {
+    font-family: 'Anton', sans-serif;
+    color: green;
+    min-height: 100vh;
+}
+
+/* ---------------- top bar ---------------- */
+
+.teams {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    padding: 0.8vw 1.2vw;
+    font-size: clamp(14px, 2.6vw, 48px);
+    color: rebeccapurple;
+    background: white;
+}
+
+.teamboxes {
+    flex: 0 0 15%;
+    min-width: 0;
+    height: 1.2em;
+    font-size: 1em;
+    line-height: 1.1;
+    border: solid;
+    border-width: 0.1em;
+    border-radius: 5px;
+    overflow: hidden;
+    resize: none;
+}
+.teamboxes:hover { opacity: .8; box-shadow: 2px 2px grey; }
+
+#team1 { background-color: lightblue; color: darkblue; }
+#team2 { background-color: peachpuff; color: red; }
+
+::-webkit-input-placeholder { text-align: center; font-family: serif; font-style: italic; font-size: .75em; }
+::placeholder               { text-align: center; font-family: serif; font-style: italic; font-size: .75em; }
+
+/* score badges */
+.score {
+    flex: 0 0 auto;
+    min-width: 1.6em;
+    padding: 0 0.25em;
+    text-align: center;
+    line-height: 1.15;
+    border: 0.08em solid;
+    border-radius: 0.3em;
+}
+#score1 { color: darkblue; background: lightblue; }
+#score2 { color: red;      background: peachpuff; }
+
+.score-pop { animation: score-pop 0.5s ease-out; }
+@keyframes score-pop {
+    0%   { transform: scale(1); }
+    35%  { transform: scale(1.35); }
+    100% { transform: scale(1); }
+}
+
+/* hit message: smaller text with insect icons beside it */
+.headmsg {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.1em 0.4em;
+    font-size: 0.62em;
+}
+.headmsg.right { justify-content: flex-end; text-align: right; }
+
+.hit-icons { display: inline-flex; align-items: center; gap: 0.15em; }
+.hit-icons img { height: 1.4em; width: auto; }
+
+/* ---------------- boards ---------------- */
+
+#game {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 1vw 1.5vw 0;
+}
+
+.side { width: var(--board-w); }
+
+.bingo {
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 0;
+    border: calc(var(--board-w) * 0.017) solid black;
+    border-radius: calc(var(--board-w) * 0.017);
+}
+#bingoTable  { color: blue; }
+#bingoTable2 { color: brown; }
+
+.col {
+    position: relative;
+    height: var(--cell-h);
+    padding: 0;
+    border: 1px solid black;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.pics {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: calc(var(--cell-h) - 2px);
+}
+
+/* ---------------- hit effects ---------------- */
+
+/* every hit: the picture jiggles and the square flashes */
+.hit-jiggle { animation: jiggle var(--hit-dur) ease-out; }
+@keyframes jiggle {
+    0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+    6%   { transform: translate(-8%, 3%) rotate(-7deg) scale(1.1); }
+    12%  { transform: translate(8%, -3%) rotate(7deg) scale(1.1); }
+    18%  { transform: translate(-7%, -3%) rotate(-6deg) scale(1.07); }
+    24%  { transform: translate(7%, 3%) rotate(6deg) scale(1.07); }
+    32%  { transform: translate(-5%, 2%) rotate(-4deg) scale(1.03); }
+    40%  { transform: translate(5%, -2%) rotate(4deg) scale(1.03); }
+    50%  { transform: translate(-3%, 1%) rotate(-3deg) scale(1); }
+    60%  { transform: translate(3%, -1%) rotate(2deg); }
+    75%  { transform: translate(-1.5%, 1%) rotate(-1deg); }
+    100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+.hit-flash { animation: hit-flash var(--hit-dur) ease-out; }
+@keyframes hit-flash {
+    0%   { background-color: #fffbe0; box-shadow: inset 0 0 35px 12px rgba(255, 220, 80, 0.95); }
+    20%  { background-color: #fff3b0; box-shadow: inset 0 0 28px 10px rgba(255, 200, 60, 0.8); }
+    100% { background-color: transparent; box-shadow: inset 0 0 0 0 rgba(255, 220, 80, 0); }
+}
+
+/* insect icon that rises out of a hit square, then settles as a faded mark */
+.segment-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: auto;
+    pointer-events: none;
+    z-index: 40;
+}
+.segment-rise {
+    width: 100%;
+    animation: segment-rise 1s ease-out forwards;
+}
+@keyframes segment-rise {
+    0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    65%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -50%) translateY(calc(var(--board-w) * -0.12)) scale(2); }
+}
+.segment-mark {
+    width: 62%;
+    opacity: 0.5;
+    transform: translate(-50%, -50%);
+    animation: mark-in 0.25s ease-out;
+}
+@keyframes mark-in {
+    from { opacity: 0; }
+    to   { opacity: 0.5; }
+}
+
+/* when an insect is completely destroyed: all its squares glow together */
+.found-flash {
+    animation: found-flash 1.6s ease-in-out;
+    z-index: 5;
+}
+@keyframes found-flash {
+    0%   { background-color: transparent; box-shadow: inset 0 0 0 0 rgba(255, 150, 0, 0); }
+    15%  { background-color: #ffe27a; box-shadow: inset 0 0 40px 16px rgba(255, 140, 0, 0.95); }
+    40%  { background-color: #fff3b0; box-shadow: inset 0 0 20px 6px rgba(255, 170, 0, 0.8); }
+    60%  { background-color: #ffe27a; box-shadow: inset 0 0 40px 16px rgba(255, 140, 0, 0.95); }
+    100% { background-color: transparent; box-shadow: inset 0 0 0 0 rgba(255, 150, 0, 0); }
+}
+
+/* the destroyed insect shown over its hiding place: starts solid, settles at 50% and stays */
+.reveal-insect {
+    position: absolute;
+    height: auto;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.5;
+    transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+    animation: reveal-fade 1.5s ease-out forwards;
+}
+@keyframes reveal-fade {
+    0%   { opacity: 1;   transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1.12); }
+    30%  { opacity: 1;   transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1); }
+    100% { opacity: 0.5; transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1); }
+}
+
+/* insects the losing side never found, shown when the game ends */
+.reveal-insect.missed {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(220, 0, 0, 0.9));
+    animation: reveal-missed 0.8s ease-out forwards;
+}
+@keyframes reveal-missed {
+    0%   { opacity: 0;   transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(0.6); }
+    100% { opacity: 0.8; transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hit-jiggle, .hit-flash, .found-flash, .score-pop { animation: none; }
+}
+
+/* ---------------- compact timer / game buttons (top bar, middle) ---------------- */
+
+#controls {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(12px, 1.05vw, 16px);
+    color: #555;
+}
+#controls input {
+    width: 3em;
+    height: 2.4em;
+    padding: 0;
+    font: inherit;
+    text-align: center;
+}
+#controls button {
+    height: 2.4em;
+    padding: 0 0.8em;
+    font: inherit;
+    color: #fff;
+    background: rebeccapurple;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+#controls button:hover { opacity: 0.85; }
+#endBtn { background: #b3261e; }
+#newBtn { background: #2e7d32; }
+#timerDisplay { min-width: 3.4em; text-align: center; font-size: 1.4em; font-variant-numeric: tabular-nums; }
+#controls.timeup #timerDisplay { color: #b3261e; animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0.35; } }
+
+/* ---------------- end of game ---------------- */
+
+.score.winner { outline: 0.1em solid gold; box-shadow: 0 0 0.4em 0.1em gold; }
+
+/* ---------------- smaller screens ---------------- */
+
+/* Tablets in landscape and small laptops: same layout, everything scales with the screen */
+@media (max-width: 1365px) {
+    .teams { font-size: clamp(14px, 2.8vw, 40px); }
+}
+
+/* Portrait tablets and phones: boards stack and the page scrolls down.
+   Each board gets nearly the full width so the pictures stay readable. */
+@media (max-width: 900px) {
+    :root { --board-w: min(92vw, 720px); }
+
+    .teams { flex-wrap: wrap; font-size: clamp(14px, 4.4vw, 30px); gap: 0.4em 0.5em; padding: 2vw; }
+    .teamboxes { flex: 1 1 0; }
+    #team1 { order: 1; }
+    #score1 { order: 2; }
+    #score2 { order: 3; }
+    #team2 { order: 4; }
+    #head  { order: 5; flex: 0 0 100%; font-size: 0.8em; }
+    #head2 { order: 6; flex: 0 0 100%; font-size: 0.8em; justify-content: flex-start; text-align: left; }
+    #controls { order: 7; flex: 0 0 100%; justify-content: center; font-size: 14px; }
+
+    #game { flex-direction: column; align-items: center; gap: 6vw; padding-top: 3vw; }
+}

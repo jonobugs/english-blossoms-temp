@@ -1,0 +1,168 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale = 1.0">
+    <meta http-equiv="X-UA-Compatible"
+    content="ie-edge">
+    
+    <!-- main.css file -->
+    <link rel="stylesheet" href="./main.css">
+    
+    <!-- game animations (jiggle + flash) -->
+    <link rel="stylesheet" href="./game-animations.css">
+    
+    <!-- font awesome cdn -->
+    <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"-->
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    
+    <!-- Anton Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    
+    <!--  adding in a favicon  -->
+        <link rel="shortcut icon" type="image/jpg" href="../favicon.png"/>
+    
+    <title>Verb Attack</title>
+    
+</head>
+
+<body>
+    
+    <audio id="audio">
+        <source src="" type="audio/mpeg">
+        Your browser does not support the audio element.
+        
+    </audio>    
+ 
+<!-- Enter in the players names -->
+<div id="container2">
+    <div class="teams">
+        <textarea placeholder="team 1" spellcheck="false" type="text" id="team1" class="teamboxes"></textarea>
+        
+        <div id="header">
+            <p id="head">Left Side</p>
+        </div>
+        
+        <div id="header">
+            <p id="head2">Right Side</p>
+        </div>
+
+        <textarea placeholder="team 2"spellcheck="false" type="text" id="team2" class="teamboxes"></textarea>
+    </div>
+</div>
+
+<!-- This is where I put the cards -->    
+<div id = "bingoContainers">
+<div id = "bingoContainer1">
+    <div id="content">
+        <table class = "bingo" id="bingoTable">
+            <tr>
+    
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a0" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a1" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a2" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a3" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a4" src=""/></td>
+            </tr>
+            <tr>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a5" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a6" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a7" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a8" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a9" src=""/></td>
+            </tr>
+            <tr>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a10" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a11" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a12" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a13" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a14" src=""/></td>
+            </tr>
+            <tr>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a15" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a16" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a17" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a18" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a19" src=""/></td>
+            </tr>
+            <tr>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a20" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a21" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a22" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a23" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="a24" src=""/></td>
+            </tr>            
+        </table>
+    
+    </div>
+</div>
+    
+<div id = "bingoContainer2">
+    <div id="content2">
+        <table class = "bingo" id="bingoTable2">
+            <tr>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b0" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b1" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b2" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b3" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b4" src=""/></td>
+            </tr>
+            <tr>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b5" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b6" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b7" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b8" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b9" src=""/></td>
+            </tr>
+            <tr>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b10" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b11" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b12" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b13" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b14" src=""/></td>
+            </tr>
+            <tr>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b15" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b16" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b17" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b18" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b19" src=""/></td>
+            </tr>
+            <tr>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b20" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b21" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b22" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b23" src=""/></td>
+                <td class = "col"><img onclick="getHit(this.id)" class = "pics" id="b24" src=""/></td>
+            </tr>
+        </table>
+    
+    </div>
+</div>
+    
+</div>
+    
+<!-- Placing the insects -->
+<div id="insectContainer">
+    <div id="insects1">
+        <img id="centipede" src="img/centipede.png">
+        <img id="caterpillar" src="img/caterpillar.png">
+        <img id="mosquito1" src="img/mosquito.png">
+        <img id="mosquito2" src="img/mosquito.png">
+    </div>
+    
+    <div id = "insects2">
+        <img id="mosquito3" src="img/mosquito.png">
+        <img id="mosquito4" src="img/mosquito.png">
+        <img id="caterpillar2" src="img/caterpillar.png">
+        <img id="centipede2" src="img/centipede.png">
+    </div>
+        
+</div>
+
+</body>
+     <script src="./main.js"></script>
+
+</html>

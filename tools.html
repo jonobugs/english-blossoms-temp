@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スクールツール | English Blossoms</title>
+    <style>
+        /* --- Basic Styles (Adjust colors to match your brand) --- */
+        :root {
+            --primary-color: #ffb7c5;
+            /* Soft Pink - adjust to your brand color */
+            --secondary-color: #7db9e8;
+            /* Soft Blue */
+            --text-color: #444;
+            --bg-color: #fdfdfd;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: #777;
+            margin-bottom: 40px;
+        }
+
+        /* --- Section Titles --- */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+            width: 100%;
+        }
+
+        /* --- App Grid --- */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .app-card h3 {
+            margin: 15px 0;
+            color: var(--secondary-color);
+        }
+
+        .app-card p {
+            font-size: 0.95rem;
+            color: #666;
+            height: 60px;
+            /* Keeps boxes even */
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>スクールツール</h1>
+        <p class="subtitle">School Tools & Apps</p>
+    </header>
+
+    <div class="container">
+
+        <!-- SECTION 1: ESL GAMES -->
+        <h2 class="section-title">英語学習ゲーム<br><span style="font-size: 0.8rem; font-weight: normal;">English Learning
+                Games</span></h2>
+        <p style="text-align: center; margin-bottom: 30px;">家でも楽しく英語を練習できるゲームです。</p>
+
+        <div class="app-grid">
+            <!-- Replace the hrefs with your actual app links -->
+            <div class="app-card">
+                <h3>Game Title 1</h3>
+                <p>Description of the first game (e.g., "Learn vocabulary through fun puzzles!")</p>
+                <a href="URL_HERE" class="btn">Play Now</a>
+            </div>
+
+            <div class="app-card">
+                <h3>Game Title 2</h3>
+                <p>Description of the second game (e.g., "Practice listening skills with this interactive adventure!")
+                </p>
+                <a href="URL_HERE" class="btn">Play Now</a>
+            </div>
+        </div>
+
+        <!-- SECTION 2: UTILITIES -->
+        <h2 class="section-title">スクール・活動ツール<br><span style="font-size: 0.8rem; font-weight: normal;">School & Club
+                Utilities</span></h2>
+        <p style="text-align: center; margin-bottom: 30px;">スクール運営やクラブ活動をスムーズにするためのツールです。</p>
+
+        <div class="app-grid">
+            <!-- Volleyball App -->
+            <div class="app-card">
+                <h3>バレーボールチーム分けアプリ</h3>
+                <p>Volleyball Team Splitting App. Quickly organize your team rotations and positions.</p>
+                <a href="URL_HERE" class="btn">Use App</a>
+            </div>
+
+            <!-- Add more utility apps here if you make them -->
+            <div class="app-card" style="border: 2px dashed #eee; background: #fafafa;">
+                <h3>Coming Soon</h3>
+                <p>We are currently developing more useful tools for our students and parents!</p>
+                <span style="color: #ccc;">Stay tuned.</span>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; English Blossoms
+    </footer>
+
+</body>
+
+</html>

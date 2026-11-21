@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="./main.css">
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+
+    <!-- Anton Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" type="image/jpg" href="../favicon.png"/>
+
+    <title>Verb Attack</title>
+</head>
+
+<body>
+
+<audio id="audio">
+    <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Top bar: team names, scores and hit messages -->
+<div id="topbar" class="teams">
+    <textarea placeholder="team 1" spellcheck="false" id="team1" class="teamboxes"></textarea>
+    <div id="score1" class="score" title="Team 1 score">0</div>
+
+    <div id="head" class="headmsg"><span class="msg">Left Side</span></div>
+    <div id="controls">
+        <input id="timerMin" type="number" min="1" max="99" value="5" title="Timer minutes" aria-label="Timer minutes">
+        <button id="timerBtn" type="button" title="Start or reset the timer">Start</button>
+        <span id="timerDisplay" title="Time left">--:--</span>
+        <button id="endBtn" type="button" title="End the game and show the hidden insects">End game</button>
+        <button id="newBtn" type="button" title="Start a new game">New game</button>
+    </div>
+
+    <div id="head2" class="headmsg right"><span class="msg">Right Side</span></div>
+
+    <div id="score2" class="score" title="Team 2 score">0</div>
+    <textarea placeholder="team 2" spellcheck="false" id="team2" class="teamboxes"></textarea>
+</div>
+
+<!-- The two boards -->
+<div id="game">
+    <section id="bingoContainer1" class="side">
+        <table class="bingo" id="bingoTable">
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a0" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a1" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a2" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a3" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a4" src=""/></td>
+            </tr>
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a5" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a6" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a7" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a8" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a9" src=""/></td>
+            </tr>
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a10" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a11" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a12" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a13" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a14" src=""/></td>
+            </tr>
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a15" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a16" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a17" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a18" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a19" src=""/></td>
+            </tr>
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a20" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a21" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a22" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a23" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="a24" src=""/></td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="bingoContainer2" class="side">
+        <table class="bingo" id="bingoTable2">
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b0" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b1" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b2" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b3" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b4" src=""/></td>
+            </tr>
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b5" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b6" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b7" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b8" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b9" src=""/></td>
+            </tr>
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b10" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b11" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b12" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b13" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b14" src=""/></td>
+            </tr>
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b15" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b16" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b17" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b18" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b19" src=""/></td>
+            </tr>
+            <tr>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b20" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b21" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b22" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b23" src=""/></td>
+                <td class="col"><img onclick="getHit(this.id)" class="pics" id="b24" src=""/></td>
+            </tr>
+        </table>
+    </section>
+</div>
+
+<script src="./main.js"></script>
+</body>
+</html>

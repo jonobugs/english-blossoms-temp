@@ -1,0 +1,85 @@
+/* ==================== JIGGLE AND FLASH ANIMATIONS ==================== */
+
+/* Animation: Square jiggles when hit (vibrates left-right) */
+.hit-jiggle {
+    animation: square-jiggle 0.25s ease-out !important;
+}
+
+@keyframes square-jiggle {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-3px); }
+    40% { transform: translateX(3px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+}
+
+/* Animation: Brief flash of light on hit */
+.hit-flash {
+    animation: square-flash 0.35s ease-out;
+}
+
+@keyframes square-flash {
+    0% { 
+        box-shadow: 0 0 0 0 rgba(255, 235, 59, 0.7);
+        filter: brightness(1);
+    }
+    50% { 
+        box-shadow: 0 0 30px 10px rgba(255, 235, 59, 0.9);
+        filter: brightness(1.3);
+    }
+    100% { 
+        box-shadow: 0 0 0 0 rgba(255, 235, 59, 0);
+        filter: brightness(1);
+    }
+}
+
+/* Animation for defeated insect squares */
+@keyframes flash-defeated {
+    0% { 
+        background-color: #ffeb3b;
+        transform: scale(1);
+    }
+    50% { 
+        background-color: #fff176;
+        box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.8);
+        transform: scale(1.03);
+    }
+    100% { 
+        background-color: #ffe0b2;
+        box-shadow: inset 0 0 30px rgba(255, 0, 0, 0.6);
+        transform: scale(1);
+    }
+}
+
+.highlight-defeated {
+    animation: flash-defeated 1.5s ease-out forwards;
+}
+
+/* Animation for showing insect image over squares */
+@keyframes show-insect {
+    0% { opacity: 1; transform: scale(0.9); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
+.insect-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.insect-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    animation: show-insect 1.5s ease-out forwards;
+}
+
+/* ==================== END ANIMATIONS ==================== */
