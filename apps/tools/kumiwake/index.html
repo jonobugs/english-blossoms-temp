@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <title>Team Manager</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="app">
+        <header>
+            <button id="rosterBtn" onclick="openRosters()"></button>
+            <span class="ttl-hint" id="ttlHint"></span>
+            <span id="count"></span>
+        </header>
+        <main>
+            <section id="lineup" class="tab on"></section>
+            <section id="teams" class="tab"></section>
+            <section id="schedule" class="tab"></section>
+            <section id="roster" class="tab"></section>
+        </main>
+        <nav>
+            <button data-t="lineup" onclick="setTab('lineup')"><svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M8 12l3 3 5-6" />
+                </svg>Lineup</button>
+            <button data-t="teams" onclick="setTab('teams')"><svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="8" height="8" rx="2" />
+                    <rect x="13" y="3" width="8" height="8" rx="2" />
+                    <rect x="3" y="13" width="8" height="8" rx="2" />
+                    <rect x="13" y="13" width="8" height="8" rx="2" />
+                </svg>Teams</button>
+            <button data-t="schedule" onclick="setTab('schedule')"><svg viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="16" rx="2" />
+                    <path d="M3 10h18M8 3v4M16 3v4" />
+                </svg>Schedule</button>
+            <button data-t="roster" onclick="setTab('roster')"><svg viewBox="0 0 24 24">
+                    <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+                </svg>Roster</button>
+        </nav>
+    </div>
+    <div id="sheet"></div>
+    <div id="toast"></div>
+    <div id="pairs"></div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
